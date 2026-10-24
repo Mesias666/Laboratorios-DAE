@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Entradas de {{ autor.nombre }}</title>
+    <link rel="stylesheet" href="{% static 'blog/estilos.css' %}">
+</head>
+<body>
+    <header><h1>Entradas de {{ autor.nombre }}</h1></header>
+    <main>
+        {% for entrada in entradas %}
+            <article class="tarjeta">
+                <h2>{{ entrada.titulo }}</h2>
+                <p>{{ entrada.contenido }}</p>
+                <small>{{ entrada.fecha_publicacion|date:"d/m/Y" }}</small>
+            </article>
+        {% empty %}
+            <p>Este autor aún no tiene entradas.</p>
+        {% endfor %}
+        <a href="{% url 'lista_autores' %}">← Volver a autores</a>
+    </main>
+</body>
+</html>

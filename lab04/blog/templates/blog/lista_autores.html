@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Autores</title>
+    <link rel="stylesheet" href="{% static 'blog/estilos.css' %}">
+</head>
+<body>
+    <header><h1>Autores del blog</h1></header>
+    <main>
+        {% for autor in autores %}
+            <div class="tarjeta">
+                <a href="{% url 'entradas_autor' autor.id %}">{{ autor.nombre }}</a>
+                <small>{{ autor.entradas.count }} entradas</small>
+            </div>
+        {% endfor %}
+        <p><a href="{% url 'lista_entradas' %}">Ver todas las entradas</a></p>
+    </main>
+</body>
+</html>
